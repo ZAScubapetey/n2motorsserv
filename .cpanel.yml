@@ -2,8 +2,10 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/hkdcfgyd/n2motorserv/
-    - /bin/cp -R assets $DEPLOYPATH
-    - /bin/cp -R images $DEPLOYPATH
-    - /bin/cp -R demo $DEPLOYPATH
+    - /bin/cp -R css $DEPLOYPATH
+    - /bin/cp -R img $DEPLOYPATH
+    - /bin/cp -R js $DEPLOYPATH
+    - /bin/cp -R lib $DEPLOYPATH
+    - /bin/cp -R scss $DEPLOYPATH
     - /bin/cp *.* $DEPLOYPATH
     
