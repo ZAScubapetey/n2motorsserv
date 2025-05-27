@@ -110,6 +110,39 @@
     <link
       href="css/style.css"
       rel="stylesheet" />
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+      (function () {
+        emailjs.init({
+          publicKey: "cVV1b_p5WkvImOiJ2",
+        });
+      })();
+    </script>
+    <script type="text/javascript">
+      window.onload = function () {
+        document.getElementById("contact-form").addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const templateParams = {
+            name: document.getElementById("name").value,
+            number: document.getElementById("number").value,
+            email: document.getElementById("email").value,
+            message: document.getElementById("message").value,
+          };
+          emailjs.send("N2Motors_Smtp", "n2motors_template", templateParams).then(
+            function (response) {
+              alert("Message sent successfully!");
+            },
+            function (error) {
+              alert("Failed to send message. Please try again.");
+              console.error(error);
+            }
+          );
+        });
+      };
+    </script>
   </head>
 
   <body>
@@ -214,10 +247,11 @@
           <a
             class="nav-item nav-link nonvisible"
             href="tel:0621060358"
-            target="_blank"><br>
+            target="_blank"
+            ><br />
             Call us on 062 106 0358
-            <br><br></a
-          >
+            <br /><br
+          /></a>
 
           <a
             class="nav-item nav-link nonvisible"
@@ -645,11 +679,13 @@
               class="bg-primary h-100 d-flex flex-column justify-content-center text-center p-5 wow zoomIn"
               data-wow-delay="0.6s">
               <h1 class="text-white mb-4">Contact For A Service</h1>
-              <form>
+              <form id="contact-form">
                 <div class="row g-3">
                   <div class="col-12">
                     <input
                       type="text"
+                      id="name"
+                      name="name"
                       class="form-control border-0"
                       placeholder="Your Name"
                       style="height: 55px" />
@@ -657,21 +693,25 @@
                   <div class="col-12">
                     <input
                       type="tel"
+                      id="number"
+                      name="number"
                       class="form-control border-0"
                       placeholder="Your Number"
                       style="height: 55px" />
                   </div>
-
                   <div class="col-12">
                     <input
                       type="email"
+                      id="email"
+                      name="email"
                       class="form-control border-0"
                       placeholder="Your Email"
                       style="height: 55px" />
                   </div>
-
                   <div class="col-12">
                     <textarea
+                      id="message"
+                      name="message"
                       class="form-control border-0"
                       placeholder="Message"></textarea>
                   </div>
@@ -915,8 +955,8 @@
               <a
                 class="mb-2"
                 href="mailto:info@n2motorservices.co.za "
-                >info@n2motorservices.co.za </a
-              >
+                >info@n2motorservices.co.za
+              </a>
             </p>
           </div>
           <div class="col-lg-6 col-md-12">
